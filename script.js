@@ -19,7 +19,7 @@ function searchMovies() {
     loading.style.display = 'block';
     movieContainer.innerHTML = '';
 
-    fetch('http://www.omdbapi.com/?apikey=5b167da0&s=' + inputKeyword.value)
+    fetch('https://www.omdbapi.com/?apikey=5b167da0&s=' + inputKeyword.value)
         .then(response => response.json())
         .then(response => {
             loading.style.display = 'none'; // Sembunyikan loading
@@ -42,7 +42,7 @@ function searchMovies() {
             modalDetailButton.forEach(btn => {
                 btn.addEventListener('click', function () {
                     const imdbid = this.dataset.imdbid;
-                    fetch('http://www.omdbapi.com/?apikey=5b167da0&i=' + imdbid)
+                    fetch('https://www.omdbapi.com/?apikey=5b167da0&i=' + imdbid)
                         .then(response => response.json())
                         .then(m => {
                             const movieDetail = showMovieDetails(m);
