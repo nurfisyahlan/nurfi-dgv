@@ -1,0 +1,39 @@
+body {
+  background-image: url('img/floor-tile.png'); 
+}
+
+
+.container{
+    border: 1px solid #a8a8a8;
+    border-radius: 15px;
+    margin-top:30px;
+}
+
+.card-img-top {
+height: 450px;
+object-fit: cover;
+}
+
+.card {
+height: 100%;
+display: flex;
+flex-direction: column;
+}
+
+.card-body {
+flex-grow: 1;
+display: flex;
+flex-direction: column;
+justify-content: space-between;
+}
+
+.loading {
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+
