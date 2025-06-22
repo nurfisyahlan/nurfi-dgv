@@ -1,5 +1,6 @@
 const searchButton = document.querySelector('.search-button');
 const inputKeyword = document.querySelector('.input-keyword');
+const proxy = 'https://corsproxy.io/?';
 
 // Jalankan fungsi pencarian saat tombol diklik
 searchButton.addEventListener('click', searchMovies);
@@ -19,7 +20,9 @@ function searchMovies() {
     loading.style.display = 'block';
     movieContainer.innerHTML = '';
 
-    fetch('https://www.omdbapi.com/?apikey=5b167da0&s=' + inputKeyword.value)
+    const urlSearch = 'https://www.omdbapi.com/?apikey=5b167da0&s=' + inputKeyword.value;
+    
+    fetch(proxy + encodeURIComponent(urlSearch))
         .then(response => response.json())
         .then(response => {
             loading.style.display = 'none'; // Sembunyikan loading
@@ -42,7 +45,9 @@ function searchMovies() {
             modalDetailButton.forEach(btn => {
                 btn.addEventListener('click', function () {
                     const imdbid = this.dataset.imdbid;
-                    fetch('https://www.omdbapi.com/?apikey=5b167da0&i=' + imdbid)
+                    const urlDetail = 'https://www.omdbapi.com/?apikey=5b167da0&i=' + imdbid;
+                    
+                    fetch(proxy + encodeURIComponent(urlDetail))
                         .then(response => response.json())
                         .then(m => {
                             const movieDetail = showMovieDetails(m);
@@ -61,7 +66,6 @@ function searchMovies() {
             });
         });
 }
-
 
 document.querySelector('.input-keyword').addEventListener('keydown', function(e) {
   if (e.key === 'Enter') {
@@ -83,7 +87,6 @@ function showCards(m) {
                 </div>
             </div>`;
 }
-
 
 function showMovieDetails(m) {
     const poster = (m.Poster === "N/A") ? "https://via.placeholder.com/300x450?text=No+Image" : m.Poster;
