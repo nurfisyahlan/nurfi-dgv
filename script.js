@@ -73,7 +73,22 @@ function searchMovies() {
                 text: 'Terjadi kesalahan jaringan atau server.',
             });
         });
-}
+        // === Selektor Input & Tombol Preset ===
+        const inputKeyword = document.querySelector('.input-keyword');
+        const harryPotterBtn = document.getElementById('harry-potter-btn');
+        const avengersBtn = document.getElementById('avengers-btn');
+
+        // === Event tombol preset ===
+        harryPotterBtn.addEventListener('click', function () {
+            inputKeyword.value = 'Harry Potter';
+            searchMovies();
+        });
+
+        avengersBtn.addEventListener('click', function () {
+            inputKeyword.value = 'The Avengers';
+            searchMovies();
+        });
+        }
 
 function showCards(m) {
     const poster = (m.Poster === "N/A") ? "https://via.placeholder.com/300x450?text=No+Image" : m.Poster;
