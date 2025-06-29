@@ -1,17 +1,36 @@
+// === Inisialisasi Elemen ===
 const searchButton = document.querySelector('.search-button');
 const inputKeyword = document.querySelector('.input-keyword');
-const proxy = 'https://api.allorigins.win/raw?url='; // Proxy lebih stabil untuk GitHub Pages
+const proxy = 'https://api.allorigins.win/raw?url='; // Proxy untuk menghindari CORS
+const harryPotterBtn = document.getElementById('harry-potter-btn');
+const avengersBtn = document.getElementById('avengers-btn');
+const indoBtn = document.getElementById('indo-btn');
 
-// Jalankan fungsi pencarian saat tombol diklik
+// === Event Listener Pencarian ===
 searchButton.addEventListener('click', searchMovies);
-
-// Jalankan fungsi pencarian saat menekan tombol Enter
 inputKeyword.addEventListener('keyup', function (e) {
     if (e.key === 'Enter') {
         searchMovies();
     }
 });
 
+// === Event Listener Tombol Preset ===
+harryPotterBtn.addEventListener('click', function () {
+    inputKeyword.value = 'Harry Potter';
+    searchMovies();
+});
+
+avengersBtn.addEventListener('click', function () {
+    inputKeyword.value = 'The Avengers';
+    searchMovies();
+});
+
+indoBtn.addEventListener('click', function () {
+    inputKeyword.value = 'Indonesia';
+    searchMovies();
+});
+
+// === Fungsi Utama Pencarian Film ===
 function searchMovies() {
     const loading = document.querySelector('.loading');
     const movieContainer = document.querySelector('.movie-container');
@@ -40,6 +59,7 @@ function searchMovies() {
             movies.forEach(m => cards += showCards(m));
             movieContainer.innerHTML = cards;
 
+            // Event listener untuk tombol detail
             const modalDetailButton = document.querySelectorAll('.modal-detail-button');
             modalDetailButton.forEach(btn => {
                 btn.addEventListener('click', function () {
@@ -73,23 +93,9 @@ function searchMovies() {
                 text: 'Terjadi kesalahan jaringan atau server.',
             });
         });
-        // === Selektor Input & Tombol Preset ===
-        const inputKeyword = document.querySelector('.input-keyword');
-        const harryPotterBtn = document.getElementById('harry-potter-btn');
-        const avengersBtn = document.getElementById('avengers-btn');
+}
 
-        // === Event tombol preset ===
-        harryPotterBtn.addEventListener('click', function () {
-            inputKeyword.value = 'Harry Potter';
-            searchMovies();
-        });
-
-        avengersBtn.addEventListener('click', function () {
-            inputKeyword.value = 'The Avengers';
-            searchMovies();
-        });
-        }
-
+// === Template Kartu Film ===
 function showCards(m) {
     const poster = (m.Poster === "N/A") ? "https://via.placeholder.com/300x450?text=No+Image" : m.Poster;
 
@@ -105,6 +111,7 @@ function showCards(m) {
             </div>`;
 }
 
+// === Template Detail Film Modal ===
 function showMovieDetails(m) {
     const poster = (m.Poster === "N/A") ? "https://via.placeholder.com/300x450?text=No+Image" : m.Poster;
 
