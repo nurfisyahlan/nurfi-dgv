@@ -1,7 +1,8 @@
 // === Inisialisasi Elemen ===
 const searchButton = document.querySelector('.search-button');
 const inputKeyword = document.querySelector('.input-keyword');
-const proxy = 'https://api.allorigins.win/raw?url='; // Proxy untuk menghindari CORS
+const clearIcon = document.querySelector('.clear-icon'); // Ikon hapus input
+const proxy = 'https://api.allorigins.win/raw?url=';
 const harryPotterBtn = document.getElementById('harry-potter-btn');
 const avengersBtn = document.getElementById('avengers-btn');
 const indoBtn = document.getElementById('indo-btn');
@@ -14,19 +15,34 @@ inputKeyword.addEventListener('keyup', function (e) {
     }
 });
 
+// Tampilkan atau sembunyikan ikon hapus
+inputKeyword.addEventListener('input', function () {
+    clearIcon.style.display = inputKeyword.value ? 'block' : 'none';
+});
+
+// Klik ikon hapus input
+clearIcon.addEventListener('click', function () {
+    inputKeyword.value = '';
+    clearIcon.style.display = 'none';
+    document.querySelector('.movie-container').innerHTML = '';
+});
+
 // === Event Listener Tombol Preset ===
 harryPotterBtn.addEventListener('click', function () {
     inputKeyword.value = 'Harry Potter';
+    clearIcon.style.display = 'block';
     searchMovies();
 });
 
 avengersBtn.addEventListener('click', function () {
     inputKeyword.value = 'The Avengers';
+    clearIcon.style.display = 'block';
     searchMovies();
 });
 
 indoBtn.addEventListener('click', function () {
     inputKeyword.value = 'Indonesia';
+    clearIcon.style.display = 'block';
     searchMovies();
 });
 
