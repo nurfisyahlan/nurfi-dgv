@@ -32,10 +32,10 @@
               <a class="nav-link" href="#">Beranda <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">About</a>
+              <a class="nav-link open-about" href="#about">About</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Contact</a>
+              <a class="nav-link open-about" href="#about">Contact</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="https://www.omdbapi.com/" target="_blank">OMDb API</a>
@@ -105,10 +105,10 @@
     <!-- Akhir Modal -->
 
     <!-- Container Tentang & Kontak -->
-    <div class="container bg-light text-light p-4 mt-4">
+    <div class="container bg-light text-light p-4 mt-4" id="about">
       <div class="d-flex justify-content-between align-items-center mb-3">        
         <h2 class="text-dark mb-0">About</h2>
-        <button class="btn btn-outline-dark btn-sm toggle-tentang">See More</button>
+        <button class="btn btn-outline-dark btn-sm toggle-tentang" id="seeMoreBtn">See More</button>
       </div>
 
       <!-- Konten yang akan dibuka/tutup -->
@@ -141,19 +141,31 @@
     <script src="script.js"></script>
 
     <script>
+    // Fungsi tombol toggle
     document.querySelector(".toggle-tentang").addEventListener("click", function () {
       const wrapper = document.querySelector(".tentang-kontak-wrapper");
 
       wrapper.classList.toggle("expanded");
       wrapper.classList.toggle("collapsed");
 
-      if (wrapper.classList.contains("expanded")) {
-        this.textContent = "Hide";
-      } else {
-        this.textContent = "Lihat Selengkapnya";
-      }
+      this.textContent = wrapper.classList.contains("expanded") ? "Hide" : "See More";
+    });
+
+    // Ketika klik About di navbar
+      document.querySelectorAll(".open-about").forEach(function (el) {
+      el.addEventListener("click", function () {
+        const wrapper = document.querySelector(".tentang-kontak-wrapper");
+        const toggleBtn = document.querySelector("#seeMoreBtn");
+
+        if (wrapper.classList.contains("collapsed")) {
+          wrapper.classList.remove("collapsed");
+          wrapper.classList.add("expanded");
+          toggleBtn.textContent = "Hide";
+        }
+      });
     });
   </script>
+
   </body>
 
   <!-- Footer -->
