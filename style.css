@@ -24,6 +24,7 @@ body::before {
     border: 1px solid #a8a8a8;
     border-radius: 15px;
     margin-top:30px;
+    margin-bottom: 30px;
 }
 
 .card-img-top {
