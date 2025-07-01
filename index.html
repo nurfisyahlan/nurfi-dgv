@@ -11,7 +11,7 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
-    <link href="img/nurfiicon-new.png" rel="icon">
+    <link href="img/movies.png" rel="icon">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
     <title>Movies - Nurfi DGV</title>
 
@@ -20,7 +20,7 @@
 
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
       <div class="container">
-        <a class="navbar-brand" href="#">🎬 Nurfi DGV</a>
+        <a class="navbar-brand" href="#">Nurfi DGV</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
           aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
@@ -32,10 +32,10 @@
               <a class="nav-link" href="#">Beranda <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Tentang</a>
+              <a class="nav-link" href="#">About</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Kontak</a>
+              <a class="nav-link" href="#">Contact</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="https://www.omdbapi.com/" target="_blank">OMDb API</a>
@@ -107,8 +107,8 @@
     <!-- Container Tentang & Kontak -->
     <div class="container bg-light text-light p-4 mt-4">
       <div class="d-flex justify-content-between align-items-center mb-3">
-        <h4 class="text-info mb-0">About</h4>
-        <button class="btn btn-outline-dark btn-sm toggle-tentang">Lihat Selengkapnya</button>
+        <h2 class="text-info mb-0">About</h2>
+        <button class="btn btn-outline-dark btn-sm toggle-tentang">See More</button>
       </div>
 
       <!-- Konten yang akan dibuka/tutup -->
@@ -120,7 +120,7 @@
             </p>
           </div>
           <div class="col-md-4 offset-1">
-            <h5 class="text-dark">Kontak</h5>
+            <h5 class="text-dark">Contact</h5>
             <ul class="text-dark list-unstyled">
               <li><i class="bi bi-linkedin mr-2"></i> nurfisyahlan</li>
               <li><i class="bi bi-instagram mr-2"></i> nurfiisyahlan</li>
@@ -148,7 +148,7 @@
       wrapper.classList.toggle("collapsed");
 
       if (wrapper.classList.contains("expanded")) {
-        this.textContent = "Sembunyikan";
+        this.textContent = "Hide";
       } else {
         this.textContent = "Lihat Selengkapnya";
       }
