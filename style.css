@@ -28,8 +28,7 @@ body::before {
 }
 
 .bg-kustom{
-  background-color: #c44e00 !important; /* warna yang kamu pilih */
-  
+  background-color: #c44e00 !important; /* warna yang kamu pilih */  
   padding: 10px;
 }
 
